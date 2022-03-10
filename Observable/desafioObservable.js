@@ -1,31 +1,28 @@
 import {Observable} from 'rxjs';
 
-function contarMultiple(tiempo) {
-    let timer;
-    let contador = 0;
-    return new Observable(observer => {
-        observer.next(contador++);
-        timer = setInterval(() => {
-            observer.next(contador++);
-            if(contador===5) {
-                observer.error("llegue a 5")
-            }
-        }, tiempo)
-    })
-}
+const span = document.getElementsByTagName('span')[0]
+const textBox = document.getElementById('textbox')
 
-let observer = contarMultiple(2000).subscribe({
-    next: (valor) => console.log(valor),
-    error:(error) => console.log(error),
-    completed:() =>console.log("finish")
+let observableText = fromEvent(textBox, 'keyup').pipe(
+    map(val=>{
+        if(textBox.value === "error") throw new Error('Se rompió todo')
+        if(textBox.value === "complete") console.log("El usuario termino por complete")
+        return val.key;
+    }) 
+)
+let observador = observableText.subscribe({
+    next:(val) => span.innerHTML = val.split("").reverse().join(""),
+    error:(error)=>{
+       console.log(error)
+       textBox.value =""
+    },
+    complete:(complete)=>{
+        console.log(complete)
+        textBox.value=""
+    }
 })
-
-setTimeout(() => {
-   
-   let observer2 = contarMultiple(10000).subscribe( {
-        next: (valor) => console.log(valor),
-    error:(error) => console.log(error),
-    completed:() =>console.log("finish")
-
-    })
-}, 5000)
+setTimeout(()=>{
+observador.unsubscribe()
+span.innerHTML=""
+textBox.value=""
+},20000)
