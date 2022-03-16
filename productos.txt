@@ -1,1 +1,20 @@
-[{"title":"ProductoNro1","price":400,"thumbnail":"URL1","id":1},{"title":"ProductoNro2","price":200,"thumbnail":"URL2","id":2},{"title":"ProductoNro3","price":200,"thumbnail":"URL3","id":3}]
+[
+	{
+		"title": "Escuadra",
+		"price": 253.60,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/ruler-triangle-stationary-school-256.png",
+		"id": 1
+	},
+	{
+		"title": "Calculadora",
+		"price": 444.51,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+		"id": 2
+	},
+	{
+		"title": " Globo Terraqueo",
+		"price": 545.10,
+		"thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png",
+		"id": 3
+	}
+]
